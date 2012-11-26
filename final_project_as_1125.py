@@ -22,10 +22,11 @@ class Graph(object):
         self.user_all[population - 1].add_friend(self.user_all[0])
         self.user_all[0].add_friend(self.user_all[population - 1])
 
-#output: user0.friends = [user1],
-#        user1.friends = [user2],
-#        user2.friends = [user3],
-#        ...user(population-1).friends = [user0]
+#output: friend_list = [user0.friends, user1.friends, ..., user(population-1).friends]
+#output: user0.friends = [user1.id],
+#        user1.friends = [user2.id],
+#        user2.friends = [user3.id],
+#        ...user(population-1).friends = [user0.id]
 
 
     def random_connections(self, num_connections):
