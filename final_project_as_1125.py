@@ -9,22 +9,39 @@ class Graph(object):
         self.population = population
         self.user_all = []
         for i in range(0, population):
-            new_user = "User" + str(i)
-            #new_user = User(i)
+            new_user = User(i)
             self.user_all.append(new_user)
-        print(self.user_all)
+#output: user_all = [User0, User1, User2, ..., User(population - 1)]
 
 
     def circle_connect(self):
         """connect each user i to user i+1, and connect the last user to user 0"""
-        pass
+        for i in range(0, population):
+            self.user_all[i].add_friend(self.user_all[i + 1])
+            self.user_all[i + 1].add_friend(self.user_all[i])
+        self.user_all[population - 1].add_friend(self.user_all[0])
+        self.user_all[0].add_friend(self.user_all[population - 1])
+
+#output: user0.friends = [user1],
+#        user1.friends = [user2],
+#        user2.friends = [user3],
+#        ...user(population-1).friends = [user0]
 
 
     def random_connections(self, num_connections):
         """add num_connections(an assigned integer) new connections randomly to the graph"""
-        pass
-    
+        while add_connection?? < num_connections:
+            user1 = random.choice(self.user_all)
+            user2 = random.choice(self.user_all)
+            if user1 is not user2:
+                user1.add_friend(user2)
+                user2.add_friend(user1)
+                add_connection += 1
 
+#output: user0.friends = [user1, user
+
+
+    
     def time_step(self, prob):
         """move the simulation forward by one time period. For every user that has the new technology, the probability of passing it on to each friend is prob"""
         pass
@@ -92,5 +109,4 @@ class GraphAnalyzer(object):
 
 
 
-inst1 = Graph(10)
-#output => ['User0', 'User1', 'User2', 'User3', 'User4', 'User5', 'User6', 'User7', 'User8', 'User9']
+
