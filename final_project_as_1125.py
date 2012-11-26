@@ -16,17 +16,16 @@ class Graph(object):
 
     def circle_connect(self):
         """connect each user i to user i+1, and connect the last user to user 0"""
-        for i in range(0, population):
+        for i in range(0, self.population - 1):
             self.user_list[i].add_friend(self.user_list[i + 1])
             self.user_list[i + 1].add_friend(self.user_list[i])
-        self.user_list[population - 1].add_friend(self.user_list[0])
-        self.user_list[0].add_friend(self.user_list[population - 1])
+        self.user_list[self.population - 1].add_friend(self.user_list[0])
+        self.user_list[0].add_friend(self.user_list[self.population - 1])
 
-#output: friend_list = [user0.friends, user1.friends, ..., user(population-1).friends]
-#output: user0.friends = [user1.id],
-#        user1.friends = [user2.id],
-#        user2.friends = [user3.id],
-#        ...user(population-1).friends = [user0.id]
+#output: user0.friends = [user(population-1), user1],
+#        user1.friends = [user0, user2],
+#        user2.friends = [user1, user3],
+#        ...user(population-1).friends = [user(population-2), user0]
 
 
     def random_connections(self, num_connections):
