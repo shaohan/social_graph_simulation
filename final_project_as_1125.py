@@ -57,6 +57,7 @@ class User(object):
             User.next_id = 0 
         self.id = User.next_id 
         User.next_id += 1
+        self.is_adopted = False
 
     def __It__(self, other):
         """this is a built in comparison function, so that User1 < User2 always return False. This is handy for sorting lists that contain users without throwing errors"""
@@ -80,12 +81,12 @@ class User(object):
 
     def has_adopted(self):
         """Returns True if the user has adopted the new technology. Returns False otherwise"""
-        pass
+        return self.is_adopted
 
     
     def set_adopted(self, new_status):
         """If new_status is True, this user adopts the new technology. If new_status is False, this user becomes a non-adopter."""
-        pass
+        self.is_adopted = new_status
 
 
 class GraphAnalyzer(object):
