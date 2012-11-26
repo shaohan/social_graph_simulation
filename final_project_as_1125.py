@@ -61,20 +61,28 @@ class User(object):
         self.id = User.next_id 
         User.next_id += 1
         self.is_adopted = False
+        self.friends = []
 
     def __It__(self, other):
         """this is a built in comparison function, so that User1 < User2 always return False. This is handy for sorting lists that contain users without throwing errors"""
         return False
     
 
-    def get_friedns(self):
+    def get_friends(self):
         """return a list of the user's friends, which are also users"""
-        pass
+        return self.friends
 
 
     def is_friend(self, other):
         """return True if this User and other are friends. return False otherwise"""
         pass
+
+
+    def add_friend(self, other):
+        if self == other:
+            return
+        if other not in self.friends:
+            self.friends.append(other)
 
 
     def get_id(self):
