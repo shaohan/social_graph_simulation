@@ -42,3 +42,10 @@ user0.add_friend(user1)
 print('user0 friend')
 for friend in user0.get_friends():
     print('-- ', friend.id)
+
+
+print('=== __lt__ test ===')
+print('user0 < user1: ',user0.__lt__(user1))
+print('user1 < user0: ',user1.__lt__(user0))
+print('user0 < user0: ',user0.__lt__(user0))
+

@@ -62,9 +62,9 @@ class User(object):
         self.is_adopted = False
         self.friends = []
 
-    def __It__(self, other):
+    def __lt__(self, other):
         """this is a built in comparison function, so that User1 < User2 always return False. This is handy for sorting lists that contain users without throwing errors"""
-        return False
+        return self.id < other.id
     
 
     def get_friends(self):
