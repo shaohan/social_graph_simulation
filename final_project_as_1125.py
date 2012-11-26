@@ -92,11 +92,10 @@ class User(object):
 
 class GraphAnalyzer(object):
     def __init__(self, graph):
-        pass
+        self.graph = graph
 
-    def choose_users(n):
+    def choose_users(self, n):
         """returns a list of n users to serve as first-adopters, chosen so that the technology saturates the graph as quickly as possible"""
-        pass
 
 
 
