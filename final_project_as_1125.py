@@ -9,7 +9,7 @@ class Graph(object):
         self.population = population
         self.user_list = []
         for i in range(0, population):
-            new_user = User(i)
+            new_user = User()
             self.user_list.append(new_user)
 #output: user_list = [User0, User1, User2, ..., User(population - 1)]
 
@@ -47,7 +47,9 @@ class Graph(object):
     
     def get_users(self):
         """returns a list containing the users in the graph, in order of their IDs"""
-        pass
+        return self.user_list
+
+    
 
 
 
