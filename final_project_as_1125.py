@@ -7,17 +7,17 @@ class Graph(object):
         no users in the new graph should have the new technology"""
 
         self.population = population
-        self.user_list = []
+        self.users = []
         for i in range(0, population):
             new_user = User()
-            self.user_list.append(new_user)
-#output: user_list = [User0, User1, User2, ..., User(population - 1)]
+            self.users.append(new_user)
+#output: users = [User0, User1, User2, ..., User(population - 1)]
 
     def circle_connect(self):
         """connect each user i to user i+1, and connect the last user to user 0"""
         for i in range(0, self.population - 1):
-            self.user_list[i].add_friend(self.user_list[i + 1])
-        self.user_list[self.population - 1].add_friend(self.user_list[0])
+            self.users[i].add_friend(self.users[i + 1])
+        self.users[self.population - 1].add_friend(self.users[0])
 
 #output: user0.friends = [user(population-1), user1],
 #        user1.friends = [user0, user2],
@@ -27,8 +27,8 @@ class Graph(object):
     def random_connections(self, num_connections):
         """add num_connections(an assigned integer) new connections randomly to the graph"""
         while add_connection < num_connections:
-            user1 = random.choice(self.user_list)
-            user2 = random.choice(self.user_list)
+            user1 = random.choice(self.users)
+            user2 = random.choice(self.users)
             if user1 is not user2:
                 user1.add_friend(user2)
                 user2.add_friend(user1)
@@ -40,7 +40,7 @@ class Graph(object):
 
     def get_users(self):
         """returns a list containing the users in the graph, in order of their IDs"""
-        return self.user_list
+        return self.users
 
 
 class User(object):
