@@ -26,12 +26,14 @@ class Graph(object):
 
     def random_connections(self, num_connections):
         """add num_connections(an assigned integer) new connections randomly to the graph"""
+        add_connection = 0
         while add_connection < num_connections:
             user1 = random.choice(self.users)
             user2 = random.choice(self.users)
             if user1 is not user2:
+                if user1.is_friend(user2):
+                    continue
                 user1.add_friend(user2)
-                user2.add_friend(user1)
                 add_connection += 1
 
     def time_step(self, prob):
