@@ -12,21 +12,20 @@ def connection_list_reverse(connection_list):
     return(reversed_connection_list)
 
 #print("reversed_conneciton_list = ", connection_list_reverse(connection_list))
-#print("original_list = ", original_list)
-        
+#print("original_list = ", original_list)        
 #connection_list_reverse(connection_list)
 
 def random_connections(num_connections, population):
 
     random_list = []
     for i in range(0, num_connections):
-        i = [random.randint (0, population), random.randint(0, population)]
+        i = [random.randint(0, population), random.randint(0, population)]
         if i in original_list:
-#            print(i)
-            print("it's duplicated!")
+            print(i, "=> it's duplicated!")
         elif i in connection_list_reverse(connection_list):
-#            print(i)
-            print("it's duplicated!")
+            print(i, "=> it's duplicated!")
+        elif i[0] == i[1]:
+            print(i, "=> is not a conneciton")
         else:
             print(i)
             random_list.append(i)
