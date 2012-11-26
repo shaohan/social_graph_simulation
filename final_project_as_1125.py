@@ -38,7 +38,23 @@ class Graph(object):
 
     def time_step(self, prob):
         """move the simulation forward by one time period. For every user that has the new technology, the probability of passing it on to each friend is prob"""
-        pass
+        next_adopters = []
+        for user in self.get_users():
+            if user.has_adopted():
+                print(user.id)
+                for friend in user.get_friends():
+                    if random.randint(1, 100) <= prob * 100:
+                        next_adopters.append(friend)
+
+        for next_adopter in next_adopters:
+            print(next_adopter.id)
+            next_adopter.set_adopted(True)
+
+        for user in self.get_users():
+            if not user.has_adopted():
+                return False
+        return True
+
 
     def get_users(self):
         """returns a list containing the users in the graph, in order of their IDs"""
@@ -96,6 +112,12 @@ class GraphAnalyzer(object):
 
     def choose_users(self, n):
         """returns a list of n users to serve as first-adopters, chosen so that the technology saturates the graph as quickly as possible"""
+        first_adopters = []
+        i = 0
+        while i < n:
+            first_adopters.append(self.graph.get_users()[i])
+            i += 1
+        return first_adopters
 
 
 

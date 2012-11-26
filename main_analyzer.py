@@ -2,7 +2,7 @@ import final_project_as_1125
 
 POPULATION = 4
 NUM_CONNECTIONS = 1
-NUM_FIRST_ADOPTERS = 1
+NUM_FIRST_ADOPTERS = 2
 
 graph = final_project_as_1125.Graph(POPULATION)
 graph.circle_connect()
@@ -18,4 +18,8 @@ for user in graph.get_users():
 print("Population:               ", POPULATION)
 print("Num_Connections:          ", NUM_CONNECTIONS)
 print("Number of first adopters: ", NUM_FIRST_ADOPTERS)
-analyzer.choose_users(NUM_FIRST_ADOPTERS)
+
+print("=== choose_users() test ===")
+first_adopters = analyzer.choose_users(NUM_FIRST_ADOPTERS)
+for user in first_adopters:
+    print('user ID: ', user.id)
