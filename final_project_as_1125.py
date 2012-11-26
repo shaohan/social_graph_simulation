@@ -18,10 +18,8 @@ class Graph(object):
         """connect each user i to user i+1, and connect the last user to user 0"""
         for i in range(0, self.population - 1):
             self.user_list[i].add_friend(self.user_list[i + 1])
-            self.user_list[i + 1].add_friend(self.user_list[i])
         self.user_list[self.population - 1].add_friend(self.user_list[0])
-        self.user_list[0].add_friend(self.user_list[self.population - 1])
-
+ 
 #output: user0.friends = [user(population-1), user1],
 #        user1.friends = [user0, user2],
 #        user2.friends = [user1, user3],
@@ -74,7 +72,10 @@ class User(object):
 
     def is_friend(self, other):
         """return True if this User and other are friends. return False otherwise"""
-        pass
+        if other in self.friends:
+            return True
+        else:
+            return False
 
 
     def add_friend(self, other):
@@ -82,6 +83,7 @@ class User(object):
             return
         if other not in self.friends:
             self.friends.append(other)
+            other.friends.append(self)
 
 
     def get_id(self):

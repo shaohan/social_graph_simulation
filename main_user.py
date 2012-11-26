@@ -23,10 +23,18 @@ print('user0 friend')
 for friend in user0.get_friends():
     print('-- ', friend.id)
 
+print("is user0 user0's friend?", user0.is_friend(user0))
+print("is user1 user0's friend?", user0.is_friend(user1))
+
 user0.add_friend(user2)
 print('user0 friend')
 for friend in user0.get_friends():
     print('-- ', friend.id)
+
+print("is user2 user0's friend?", user0.is_friend(user2))
+print("is user0 user2's friend?", user2.is_friend(user0))
+print("is user1 user0's friend?", user0.is_friend(user1))
+
 
 user0.add_friend(user1)
 print('user0 friend')
