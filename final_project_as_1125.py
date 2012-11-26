@@ -30,16 +30,13 @@ class Graph(object):
 
     def random_connections(self, num_connections):
         """add num_connections(an assigned integer) new connections randomly to the graph"""
-        while add_connection?? < num_connections:
+        while add_connection < num_connections:
             user1 = random.choice(self.user_all)
             user2 = random.choice(self.user_all)
             if user1 is not user2:
                 user1.add_friend(user2)
                 user2.add_friend(user1)
                 add_connection += 1
-
-#output: user0.friends = [user1, user
-
 
     
     def time_step(self, prob):
@@ -54,11 +51,13 @@ class Graph(object):
 
 
 class User(object):
-    def __init__(self, ID):
-        self.ID = ID
-        self.friends = []
-   
-     
+ 
+    def __init__(self):
+        if not hasattr(self, 'next_id'):
+            User.next_id = 0 
+        self.id = User.next_id 
+        User.next_id += 1
+
     def __It__(self, other):
         """this is a built in comparison function, so that User1 < User2 always return False. This is handy for sorting lists that contain users without throwing errors"""
         return False
@@ -66,25 +65,17 @@ class User(object):
 
     def get_friedns(self):
         """return a list of the user's friends, which are also users"""
-        return self.friends
+        pass
 
 
     def is_friend(self, other):
         """return True if this User and other are friends. return False otherwise"""
-        if other in self.friends:
-            return True
-        else:
-            return False
+        pass
 
 
-    def add_friend(self, other):
-        if other not in self.friends:
-            self.friends.append(other)
-
-        
     def get_id(self):
         """return this user's id"""
-        return self.ID
+        return self.id
 
 
     def has_adopted(self):
