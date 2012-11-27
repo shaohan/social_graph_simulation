@@ -114,6 +114,9 @@ class GraphAnalyzer(object):
         """returns a list of n users to serve as first-adopters,
         chosen so that the technology saturates the graph as quickly as possible"""
         print("Choosing first-adopters count: ", n)
+        if n > len(self.graph.get_users()):
+            print("n is larger than the number of users. n =", n, ", users =", len(self.graph.get_users()))
+            return []
         most_friends_user_list = []
         for most_friends_user_index in range(0,n):
             most_friends_count = 0
