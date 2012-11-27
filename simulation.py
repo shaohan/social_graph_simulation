@@ -4,6 +4,8 @@ POPULATION = 500
 NUM_RANDOM_CONNECTIONS = 1000
 NUM_FIRST_ADOPTERS = 4
 
+NUM_SIMULATIONS = 100
+
 def print_users(graph):
     for user in graph.get_users():
         print('user ID:', user.id)
@@ -46,12 +48,19 @@ def run_simulation():
     return time_step_count
 
 time_step_counts = []
-for i in range(0, 100):
+for i in range(0, NUM_SIMULATIONS):
     time_step_counts.append(run_simulation())
     print('====================')
 
 total_time_step_count = 0
+max_time_step_count = 0
+min_time_step_count = 10000
+
 for time_step_count in time_step_counts:
     total_time_step_count += time_step_count
+    max_time_step_count = max(max_time_step_count, time_step_count)
+    min_time_step_count = min(min_time_step_count, time_step_count)
 
-print("Average time step counts: ", total_time_step_count / 100.0)
+print("Average time step counts: ", total_time_step_count / NUM_SIMULATIONS * 1.0)
+print("Max time step count: ", max_time_step_count)
+print("Min time step count: ", min_time_step_count)
