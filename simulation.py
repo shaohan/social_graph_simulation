@@ -26,3 +26,22 @@ print("Number of first adopters: ", NUM_FIRST_ADOPTERS)
 
 my_analyzer.choose_users(NUM_FIRST_ADOPTERS)
 #my_graph.print_users()
+
+time_step_count = 1
+while True:
+    #print("Running time_step: ", time_step_count)
+    time_step_count = time_step_count + 1
+    if my_graph.time_step(0.25):
+        print ("The graph is saturated")
+        break
+print("Total time step used: ", time_step_count)
+
+adopted_count = 0
+not_adopted_count = 0
+for i in my_graph.get_users():
+    if i.has_adopted:
+        adopted_count = adopted_count + 1
+    else:
+        not_adopted_count = not_adopted_count + 1
+print("Total adopted count: ", adopted_count)
+print("Total not adopted count: ", not_adopted_count)
