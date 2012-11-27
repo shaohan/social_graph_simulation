@@ -114,25 +114,25 @@ class GraphAnalyzer(object):
         """returns a list of n users to serve as first-adopters,
         chosen so that the technology saturates the graph as quickly as possible"""
         print("Choosing first-adopters count: ", n)
-        user_list = []
-        for i in range(0,n):
-            max = 0
-            max_user = self.graph.get_users()[0]
+        most_friends_user_list = []
+        for most_friends_user_index in range(0,n):
+            most_friends_count = 0
+            most_friends_user = self.graph.get_users()[0]
             ## selecting users with maximum friends
             ## and not already selected
-            for i in self.graph.get_users():
-                ##print("testing ids: ", i.ID, len(i.friends))
-                if len(i.friends) > max and i not in user_list:
-                    ##print("selecting ids: ", i.ID, len(i.friends))
-                    max = len(i.friends)
-                    max_user = i
-            user_list.append(max_user)
+            for user in self.graph.get_users():
+                ##print("testing ids: ", user.ID, len(user.friends))
+                if len(user.friends) > most_friends_count and user not in most_friends_user_list:
+                    ##print("selecting ids: ", user.ID, len(user.friends))
+                    most_friends_count = len(user.friends)
+                    most_friends_user = user
+            most_friends_user_list.append(most_friends_user)
         ## printing selected user list
-        for user in user_list:
+        for user in most_friends_user_list:
             print("choosing user IDs: ", user.get_id(), " with ", len(user.friends), " friends")
             ## testing by setting adopted flag
             user.set_adopted(True)
-        return user_list
+        return most_friends_user_list
 
 
 
