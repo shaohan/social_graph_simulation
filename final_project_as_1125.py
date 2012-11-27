@@ -41,13 +41,11 @@ class Graph(object):
         next_adopters = []
         for user in self.get_users():
             if user.has_adopted():
-                print(user.id)
                 for friend in user.get_friends():
                     if random.randint(1, 100) <= prob * 100:
                         next_adopters.append(friend)
 
         for next_adopter in next_adopters:
-            print(next_adopter.id)
             next_adopter.set_adopted(True)
 
         for user in self.get_users():
