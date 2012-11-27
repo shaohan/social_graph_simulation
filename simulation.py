@@ -15,5 +15,6 @@ my_analyzer = final_project_as_1125.GraphAnalyzer(my_graph)
 print("=== get_users() test ===")
 print_users(my_graph)
 print_users(my_graph)
-#my_analyzer.choose_users(20)
+
+my_analyzer.choose_users(20)
 #my_graph.print_users()

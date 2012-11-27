@@ -117,10 +117,10 @@ class GraphAnalyzer(object):
         user_list = []
         for i in range(0,n):
             max = 0
-            max_user = self.graph.user_all[0]
+            max_user = self.graph.get_users()[0]
             ## selecting users with maximum friends
             ## and not already selected
-            for i in self.graph.user_all:
+            for i in self.graph.get_users():
                 ##print("testing ids: ", i.ID, len(i.friends))
                 if len(i.friends) > max and i not in user_list:
                     ##print("selecting ids: ", i.ID, len(i.friends))
@@ -128,10 +128,10 @@ class GraphAnalyzer(object):
                     max_user = i
             user_list.append(max_user)
         ## printing selected user list
-        for j in user_list:
-            print("choosing user IDs: ", j.ID, " with ", len(j.friends), " friends")
+        for user in user_list:
+            print("choosing user IDs: ", user.get_id(), " with ", len(user.friends), " friends")
             ## testing by setting adopted flag
-            j.set_adopted(True)
+            user.set_adopted(True)
         return user_list
 
 
