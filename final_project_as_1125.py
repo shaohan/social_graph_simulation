@@ -110,15 +110,29 @@ class GraphAnalyzer(object):
     def __init__(self, graph):
         self.graph = graph
 
-    def choose_users(self, n):
-        """returns a list of n users to serve as first-adopters, chosen so that the technology saturates the graph as quickly as possible"""
-        first_adopters = []
-        i = 0
-        while i < n:
-            first_adopters.append(self.graph.get_users()[i])
-            i += 1
-        return first_adopters
-
+    def choose_users(self,n):
+        """returns a list of n users to serve as first-adopters,
+        chosen so that the technology saturates the graph as quickly as possible"""
+        print("Choosing first-adopters count: ", n)
+        user_list = []
+        for i in range(0,n):
+            max = 0
+            max_user = self.graph.user_all[0]
+            ## selecting users with maximum friends
+            ## and not already selected
+            for i in self.graph.user_all:
+                ##print("testing ids: ", i.ID, len(i.friends))
+                if len(i.friends) > max and i not in user_list:
+                    ##print("selecting ids: ", i.ID, len(i.friends))
+                    max = len(i.friends)
+                    max_user = i
+            user_list.append(max_user)
+        ## printing selected user list
+        for j in user_list:
+            print("choosing user IDs: ", j.ID, " with ", len(j.friends), " friends")
+            ## testing by setting adopted flag
+            j.set_adopted(True)
+        return user_list
 
 
 
